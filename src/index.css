@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d7a6e;
+  --color-teal-700: #0a6459;
+}
+
+body {
+  background-color: #030712;
+  color: #f3f4f6;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
