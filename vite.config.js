@@ -7,5 +7,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
-  base: '/chirodesk-landing/',
+  // Served at the domain root (chirodesk.pro via Cloudflare Pages), so assets
+  // must resolve from '/', not the old GitHub Pages subfolder.
+  base: '/',
 })
