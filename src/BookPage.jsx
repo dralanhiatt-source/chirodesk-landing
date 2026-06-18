@@ -18,7 +18,7 @@ export default function BookPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.firstName || !form.lastName || !form.phone) return alert('First name, last name, and phone are required.');
-    if (!form.consentText) return alert('Please agree to receive text messages to continue.');
+    // SMS consent is OPTIONAL and must never block booking (TCR 30923).
 
     // Save locally as a fallback, and best-effort sync to Supabase pending_bookings
     // (feeds the existing office notification pipeline).
@@ -125,8 +125,8 @@ export default function BookPage() {
           </div>
 
           <label className="flex items-start gap-2 cursor-pointer mt-2">
-            <input type="checkbox" required checked={form.consentText} onChange={e => setForm({ ...form, consentText: e.target.checked })} className="accent-teal-600 mt-1" />
-            <span className="text-sm text-gray-300">I agree to receive automated text messages (appointment confirmations, reminders, and updates) from Affordable Chiropractic. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. <a href="https://chirodesk.pro/sms-terms" target="_blank" rel="noreferrer" className="underline text-teal-400">SMS Terms</a></span>
+            <input type="checkbox" checked={form.consentText} onChange={e => setForm({ ...form, consentText: e.target.checked })} className="accent-teal-600 mt-1" />
+            <span className="text-sm text-gray-300">I'd like to receive automated text messages (appointment confirmations, reminders, and updates) from Affordable Chiropractic. This is optional &mdash; your consent is not required to book an appointment or receive care. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. <a href="https://chirodesk.pro/sms-terms" target="_blank" rel="noreferrer" className="underline text-teal-400">SMS Terms</a></span>
           </label>
 
           <button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white rounded-xl py-3 font-semibold text-lg transition mt-2">
